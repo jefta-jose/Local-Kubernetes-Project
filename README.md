@@ -190,3 +190,61 @@ Great! Here's a curated list of **commonly used `kubectl` commands** grouped by 
 | Attach to a pod's terminal                     | `kubectl attach POD_NAME -c CONTAINER_NAME -i`             |
 
 ---
+
+`Chart.yaml` is one of the **core files** in every Helm chart. It acts like the **"package.json" of a Helm chart**, describing metadata about the chart itself.
+
+---
+
+### 🧭 **What is `Chart.yaml` in Helm?**
+
+In the context of Helm, `Chart.yaml`:
+
+* Defines **metadata** about your Helm chart.
+* Tells Helm what this chart is, what version it is, and optionally what app version it deploys.
+* Is **required** for every chart. Helm will refuse to package or install a chart without it.
+
+---
+
+### 🔍 **Breakdown of your example**
+
+```yaml
+apiVersion: v2
+name: react-app
+description: A Helm chart for React App
+version: 0.1.0
+appVersion: "1.0"
+```
+
+| Field               | Meaning                                                                                                       |
+| ------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `apiVersion: v2`    | Helm chart API version. Use `v2` for Helm 3.                                                                  |
+| `name: react-app`   | The name of the chart — also used in the release name.                                                        |
+| `description`       | A short explanation of what the chart does.                                                                   |
+| `version: 0.1.0`    | The version of the **chart package**, not the app itself. This follows [SemVer](https://semver.org/).         |
+| `appVersion: "1.0"` | The version of the actual application (e.g., the React app) being deployed. Used mostly for display purposes. |
+
+---
+
+### 📦 Where is `Chart.yaml` used?
+
+* When you run `helm install`, Helm uses this file to identify and describe the chart.
+* When you push or share charts (e.g., to a Helm repo), this file provides the metadata Helm uses to list it.
+* It's used by `helm dependency` if your chart relies on other charts.
+
+---
+
+### 🔄 Example with dependencies
+
+```yaml
+apiVersion: v2
+name: my-app
+version: 1.2.3
+dependencies:
+  - name: mongodb
+    version: 10.2.0
+    repository: "https://charts.bitnami.com/bitnami"
+```
+
+This declares that your chart depends on the `mongodb` chart.
+
+---
