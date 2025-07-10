@@ -1,0 +1,9 @@
+replicaCount: 3
+
+image:
+  repository: my-react-app
+  pullPolicy: Never
+
+service:
+  type: Nodeport
+  port: 5173

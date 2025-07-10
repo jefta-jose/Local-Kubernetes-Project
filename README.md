@@ -248,3 +248,83 @@ dependencies:
 This declares that your chart depends on the `mongodb` chart.
 
 ---
+
+---
+
+### 🧭 **What is `values.yaml` in Helm?**
+
+The `values.yaml` file is where you define **default configuration values** for your Helm chart — it acts like a global config for your Kubernetes templates.
+
+These values get **injected into the templates** (under `templates/`) via Helm’s Go templating engine using the syntax `{{ .Values.<key> }}`.
+
+---
+
+### 🔍 **Breakdown of your example**
+
+```yaml
+replicaCount: 3
+```
+
+* This sets the number of pod replicas, likely used in a `Deployment.yaml` template like:
+
+  ```yaml
+  replicas: {{ .Values.replicaCount }}
+  ```
+
+```yaml
+image:
+  repository: react-kube-demo
+  pullPolicy: Never
+```
+
+* This configures the Docker image to use.
+* In the `Deployment.yaml`, it might look like:
+
+  ```yaml
+  image: "{{ .Values.image.repository }}"
+  imagePullPolicy: {{ .Values.image.pullPolicy }}
+  ```
+
+```yaml
+service:
+  type: NodePort
+  port: 80
+```
+
+* These values configure the Kubernetes Service resource.
+* Your `service.yaml` might look like:
+
+  ```yaml
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+  ```
+
+---
+
+### ✅ **Why is `values.yaml` useful?**
+
+* **Reusable charts**: Instead of hardcoding things, you define variables.
+* **Override flexibility**: You can change behavior at install/upgrade time:
+
+  ```bash
+  helm install react-demo ./my-chart -f custom-values.yaml
+  ```
+
+  Or override on the CLI:
+
+  ```bash
+  helm install react-demo ./my-chart \
+    --set replicaCount=2,image.pullPolicy=Always
+  ```
+
+---
+
+### 🧠 TL;DR
+
+| File          | Purpose                                                  |
+| ------------- | -------------------------------------------------------- |
+| `Chart.yaml`  | Metadata about the chart (name, version, dependencies)   |
+| `values.yaml` | Default user-configurable values injected into templates |
+
+---
