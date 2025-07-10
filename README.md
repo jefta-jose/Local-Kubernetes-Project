@@ -123,7 +123,7 @@ Great! Here's a curated list of **commonly used `kubectl` commands** grouped by 
 | View all contexts    | `kubectl  get-contexts`                |
 | Switch context       | `kubectl  use-context CONTEXT_NAME`    |
 | Delete context       | `kubectl  delete-context CONTEXT_NAME` |
-| Delete Kind Cluster  | `kubectl config delete-cluster kind-cluster` | 
+| Delete Kind Cluster  | `kubectl config delete-cluster CONTEXT_NAME` | 
 
 ---
 
