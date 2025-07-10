@@ -5,5 +5,11 @@ image:
   pullPolicy: Never
 
 service:
-  type: Nodeport
-  port: 5173
+  type: NodePort
+  containerPort: 5173
+  # with nodePort as 5001, it will be accessible on localhost:5001
+  # its like doing docker run -d -p 5001:5173 image-name
+  
+  #But Kubernetes restricts NodePorts to the range 30000–32767 by default. If you're using Docker Desktop, this might work, but for safety and portability, use something like:
+  nodePort: 5001
+  port: 80

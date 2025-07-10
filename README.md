@@ -328,3 +328,63 @@ service:
 | `values.yaml` | Default user-configurable values injected into templates |
 
 ---
+
+---
+
+### 🛠️ **Deployment YAML**
+
+* **Purpose:** Manages **how your application is deployed** and run inside Kubernetes Pods.
+* **Think of it like:** `docker run` or `docker-compose up` — it handles container creation, scaling, and updating.
+* **Key responsibilities:**
+
+  * Defines **how many replicas** (pods) to run.
+  * Specifies **which container image** to use.
+  * Tells Kubernetes **what port(s)** the container exposes.
+  * Handles **rolling updates, self-healing**, and restarts.
+
+✅ **In short:**
+
+> The Deployment ensures that the desired number of containers are running with the correct version of your app.
+
+---
+
+### 🌐 **Service YAML**
+
+* **Purpose:** Exposes a **stable network endpoint** to access the app running in the Pods created by the Deployment.
+* **Think of it like:** Setting up `-p` (port mapping) or load balancer access in Docker.
+* **Key responsibilities:**
+
+  * Gives a **permanent IP/hostname** to your Pods (which are otherwise ephemeral).
+  * Handles **load balancing** across multiple pods.
+  * Can expose the app:
+
+    * Internally (ClusterIP)
+    * To the host machine (NodePort)
+    * Outside the cluster (LoadBalancer or Ingress)
+
+✅ **In short:**
+
+> The Service allows traffic **to reach your application**, no matter how many pods are running or where they are.
+
+---
+
+### 🧠 Visual Analogy
+
+Imagine you're running a pizza shop:
+
+* **Deployment** = You hire 3 chefs (pods) who know how to make your pizza recipe (image).
+* **Service** = The front counter that customers use to place their orders (access point to reach your chefs).
+
+---
+
+### Summary Table
+
+| Feature        | Deployment                          | Service                                    |
+| -------------- | ----------------------------------- | ------------------------------------------ |
+| Purpose        | Deploy and manage containers (Pods) | Expose and access running Pods             |
+| Manages        | Scaling, replicas, image versions   | Network routing/load balancing             |
+| Creates        | Pods                                | A stable IP + port to reach Pods           |
+| Example Use    | `kubectl apply -f deployment.yaml`  | `kubectl apply -f service.yaml`            |
+| Docker Analogy | `docker run` / `docker-compose up`  | `-p host:container` or proxy/load balancer |
+
+---

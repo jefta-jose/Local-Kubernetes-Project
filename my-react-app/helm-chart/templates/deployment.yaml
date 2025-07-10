@@ -1,0 +1,23 @@
+# DEPLOYS MY APPLICATION
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-app
+  namespace: react-space
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: react-app
+  template:
+    metadata:
+      labels:
+        app: react-app
+    spec:
+      containers:
+        - name: react-app-container
+          image: {{ .Values.image.repository }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+          # You're telling Kubernetes the container listens on port 5173.
+            - containerPort: {{ .Values.service.containerPort }}
