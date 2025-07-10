@@ -118,11 +118,11 @@ Great! Here's a curated list of **commonly used `kubectl` commands** grouped by 
 
 | Action               | Command                                      |
 | -------------------- | -------------------------------------------- |
-| View clusters        | `kubectl  get-clusters`                |
-| View current context | `kubectl  current-context`             |
-| View all contexts    | `kubectl  get-contexts`                |
-| Switch context       | `kubectl  use-context CONTEXT_NAME`    |
-| Delete context       | `kubectl  delete-context CONTEXT_NAME` |
+| View clusters        | `kubectl config get-clusters`                |
+| View current context | `kubectl config current-context`             |
+| View all contexts    | `kubectl config get-contexts`                |
+| Switch context       | `kubectl config use-context CONTEXT_NAME`    |
+| Delete context       | `kubectl config delete-context CONTEXT_NAME` |
 | Delete Kind Cluster  | `kubectl config delete-cluster CONTEXT_NAME` | 
 
 ---

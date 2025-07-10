@@ -1,0 +1,12 @@
+# command to simulate multi-node cliuster with kind
+# kind create cluster --name multi-test-node --config=kind-config.yaml
+
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+  - role: worker
+  - role: worker
+
+# this simulates a multi-node cluster with one control plane and two worker nodes
+# you can add more nodes by adding more entries to the nodes list
