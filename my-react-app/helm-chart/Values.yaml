@@ -13,4 +13,5 @@ service:
   
   #But Kubernetes restricts NodePorts to the range 30000–32767 by default. If you're using Docker Desktop, this might work, but for safety and portability, use something like:
   nodePort: 30001
+
   
