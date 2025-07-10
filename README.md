@@ -97,7 +97,7 @@ kind delete cluster --name my-cluster && kind create cluster --name my-cluster
 
 ---
 
-### 🧾 Example Config File (`kind-config.yaml`)
+### 🧾 Example  File (`kind-.yaml`)
 
 ```yaml
 kind: Cluster
@@ -118,11 +118,12 @@ Great! Here's a curated list of **commonly used `kubectl` commands** grouped by 
 
 | Action               | Command                                      |
 | -------------------- | -------------------------------------------- |
-| View clusters        | `kubectl config get-clusters`                |
-| View current context | `kubectl config current-context`             |
-| View all contexts    | `kubectl config get-contexts`                |
-| Switch context       | `kubectl config use-context CONTEXT_NAME`    |
-| Delete context       | `kubectl config delete-context CONTEXT_NAME` |
+| View clusters        | `kubectl  get-clusters`                |
+| View current context | `kubectl  current-context`             |
+| View all contexts    | `kubectl  get-contexts`                |
+| Switch context       | `kubectl  use-context CONTEXT_NAME`    |
+| Delete context       | `kubectl  delete-context CONTEXT_NAME` |
+| Delete Kind Cluster  | `kubectl config delete-cluster kind-cluster` | 
 
 ---
 
@@ -253,7 +254,7 @@ This declares that your chart depends on the `mongodb` chart.
 
 ### 🧭 **What is `values.yaml` in Helm?**
 
-The `values.yaml` file is where you define **default configuration values** for your Helm chart — it acts like a global config for your Kubernetes templates.
+The `values.yaml` file is where you define **default uration values** for your Helm chart — it acts like a global config for your Kubernetes templates.
 
 These values get **injected into the templates** (under `templates/`) via Helm’s Go templating engine using the syntax `{{ .Values.<key> }}`.
 
