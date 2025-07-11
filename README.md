@@ -135,6 +135,7 @@ Great! Here's a curated list of **commonly used `kubectl` commands** grouped by 
 | List all deployments                        | `kubectl get deployments`                 |
 | Create from YAML                            | `kubectl apply -f deployment.yaml`        |
 | Delete a deployment                         | `kubectl delete deployment my-deploy`     |
+| Delete deployment in a namespace            | `kubectl delete deployment image-name -n namespace-name ` |
 | View pod logs                               | `kubectl logs POD_NAME`                   |
 | View logs of a pod with multiple containers | `kubectl logs POD_NAME -c CONTAINER_NAME` |
 | Exec into a running pod                     | `kubectl exec -it POD_NAME -- /bin/sh`    |
